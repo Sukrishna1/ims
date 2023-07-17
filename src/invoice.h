@@ -3,6 +3,7 @@
 #include <vector>
 #include "product.h"
 #include "inventory.h"
+#include "cartItem.h"
 
 class Invoice
 {
@@ -19,11 +20,36 @@ public:
 
 public:
     int InvoiceId;
-    std::vector<Product> Cart;
+    std::vector<CartItem *> Cart;
     int TotalPrice;
 
 public:
-    void AddToCart()
+    void AddToCart(int productId, int unit, int price)
     {
+        for (auto x : this->inventory->getProducts())
+        {
+            if (x->Id == productId)
+            {
+                Product *p = new Product(x->Id, price, x->Name);
+                CartItem *ci = new CartItem(p, unit, price);
+                this->Cart.push_back(ci);
+                return;
+            }
+        }
+    }
+
+    void ChangeCartItem(int productId, int unit, int price)
+    {
+        for (auto x : this->Cart)
+        {
+            if (x->getProduct()->Id == productId)
+            {
+                auto p = x->getProduct();
+                p->Price = price;
+                x->Unit = unit;
+                x->SellingPrice = price;
+                return;
+            }
+        }
     }
 };

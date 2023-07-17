@@ -6,6 +6,10 @@ class Product
 {
 
 public:
+    Product(){
+
+    };
+
     Product(int id, int price, std::string name)
     {
         this->Id = id;

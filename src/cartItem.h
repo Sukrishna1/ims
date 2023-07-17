@@ -1,11 +1,25 @@
 #pragma once
 
-#include <product.h>
+#include "product.h"
 
 class CartItem
 {
-private:
-    Product *product;
+public:
+    CartItem(const Product *product, int unit, int sellingPrice)
+    {
+        this->product = *product;
+        this->Unit = unit;
+        this->SellingPrice = sellingPrice;
+    };
+
+    Product *getProduct()
+    {
+        return &product;
+    };
+
     int Unit;
     int SellingPrice;
+
+private:
+    Product product;
 };

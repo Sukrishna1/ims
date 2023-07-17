@@ -1,10 +1,14 @@
-#include <vector>
-#include <product.h>
+#pragma once
 
-using namespace std;
+#include <vector>
+#include "product.h"
 
 class Inventory
 {
+
+public:
+    Inventory() {}
+
 private:
     std::vector<Product *> Products;
 
@@ -17,5 +21,10 @@ public:
         Products.push_back(new Product(3, 30, "IJK"));
         Products.push_back(new Product(4, 40, "LMN"));
         Products.push_back(new Product(5, 50, "OPQ"));
+    };
+
+    std::vector<Product *> getProducts() const
+    {
+        return this->Products;
     };
 };

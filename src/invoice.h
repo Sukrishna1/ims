@@ -1,8 +1,8 @@
-#include <vector>
-#include <product.h>
-#include <inventory.h>
+#pragma once
 
-using namespace std;
+#include <vector>
+#include "product.h"
+#include "inventory.h"
 
 class Invoice
 {
